@@ -1,0 +1,519 @@
+{
+  "Uuid": "9cb4fa71-aecc-43a7-8b71-683f1ec56ff9",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "NP_DP_Parameter_Wertsetzen_ExcelImport",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "674b40b596864fa8bbd124d61a7d7ca8",
+      "Name": "Date Ablage Ort (File path) - String",
+      "Type": "string",
+      "Type2": "string",
+      "Value": "C:\\Users\\m.elsayed\\OneDrive - Nickl-Architekten\\Desktop\\Scripts\\Excel Sheets\\NP_Tür_Values.xlsx",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
+    },
+    {
+      "Id": "45c770f8f9d8463ba502ab0507f5a7e0",
+      "Name": "Zielparameter - String",
+      "Type": "string",
+      "Type2": "string",
+      "Value": "NP_Tür_iBO_Funktion",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
+    },
+    {
+      "Id": "89c32883829540b2a7d8a4304807ee84",
+      "Name": "Categories",
+      "Type": "selection",
+      "Type2": "dropdownSelection",
+      "Value": "OST_Doors",
+      "Description": "Alle integrierten Kategorien",
+      "SelectedIndex": 709
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "3eeab3499e5c4b2591e42520385ecc45",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "9dd50ad8448d466e9fcf540398a8f940",
+          "Name": "file",
+          "Description": "Datei mit der Excel-Arbeitsmappe\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c04d6f553c314537a3936adb4d032504",
+          "Name": "sheetName",
+          "Description": "Name des Arbeitsblatts, das Daten enthält\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "df6b0ff610cb4e8abeeb81cfde6f37fa",
+          "Name": "readAsStrings",
+          "Description": "Lesen von Zellen als Zeichenfolgen ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b741275b4da3414a9e0d26ebce80692c",
+          "Name": "showExcel",
+          "Description": "Anzeigen des Excel-Hauptfensters ein/aus\n\nbool\nVorgabewert : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "803b6a1bf42e49c78e372176bcb28b8c",
+          "Name": "data",
+          "Description": "Zeilen mit Daten aus dem Excel-Arbeitsblatt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSOffice.Data.ImportExcel@var,string,bool,bool",
+      "Replication": "Auto",
+      "Description": "Liest Daten aus einer Microsoft Excel-Tabelle. Daten werden nach Zeilen gelesen und in einer Reihe von Listen nach Zeilen ausgegeben. Zeilen und Spalten sind nullbasiert indiziert; Beispiel: Der Wert aus Zelle A1 erscheint in der Liste an Position [0,0]. Für diesen Knoten muss Microsoft Excel installiert sein.\n\nData.ImportExcel (file: var, sheetName: string, readAsStrings: bool = false, showExcel: bool = true): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "Id": "ce8f4a84d37a4c939f2c37dd16c8d90b",
+      "NodeType": "BooleanInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c3777c63bd574857826b12cabb6996d3",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl zwischen True und False",
+      "InputValue": true
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "Id": "674b40b596864fa8bbd124d61a7d7ca8",
+      "NodeType": "StringInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b6b77ac97c6d4cd5ae7888424e4015c6",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "InputValue": "C:\\Users\\m.elsayed\\OneDrive - Nickl-Architekten\\Desktop\\Scripts\\Excel Sheets\\NP_Tür_Values.xlsx"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "Id": "c9a79f3b4a4444819313c4fbcf7f8850",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "42f006746f344ff8965ba020a1471249",
+          "Name": "path",
+          "Description": "Pfad zur Datei als Zeichenfolge.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "50c2458d936c442c84c140e8ea282e5c",
+          "Name": "file",
+          "Description": "Dateiobjekt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt ein Dateiobjekt aus dem angegebenen Pfad"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "2eee0d9ce0754b749d96ed218bd0b4ca",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "2339c3e50fa946f682d6ea2abb52ce57",
+          "Name": "list",
+          "Description": "Zu vereinfachende Liste\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bed7021f511e48178b088291365c65c3",
+          "Name": "amount",
+          "Description": "Layer der zu entfernenden Listenverschachtelung (-1 entfernt alle Listenverschachtelungen)\n\nint\nVorgabewert : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f7e1dc83b58b4122a6bdaffed562845b",
+          "Name": "list",
+          "Description": "Vereinfachte Liste nach Betrag",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Replication": "Auto",
+      "Description": "Vereinfacht eine verschachtelte Liste von Listen um eine bestimmte Anzahl von Ebenen.\n\nList.Flatten (list: var[]..[], amount: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "6af2506bd20f4bf7ae3a8b14fedd4313",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "becffa259cc1402a828741e09990b06e",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d4ccaab7f59648febee931d9ebf14f97",
+          "Name": "parameterName",
+          "Description": "Der Name des festzulegenden Parameters\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5a8a3b52c5d347d9a347fedd8206ee01",
+          "Name": "value",
+          "Description": "Der Wert\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "77ff2ab5aeff48318b29f86a0ce93a5a",
+          "Name": "Element",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.Element.SetParameterByName@string,var",
+      "Replication": "Auto",
+      "Description": "Legt einen der Parameter für das Element fest.\n\nElement.SetParameterByName (parameterName: string, value: var): Element"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "Id": "670328ab57034caab453ef9494852237",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "f86ee841a4584e25817eeb9c5ff6f710",
+          "Name": "Category",
+          "Description": "Die Kategorie",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "427f8175fb29434e8fb7d4a0a2600fd4",
+          "Name": "Elements",
+          "Description": "Eine Elementklasse.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ruft alle Elemente der angegebenen Kategorie aus dem Modell ab."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "Id": "45c770f8f9d8463ba502ab0507f5a7e0",
+      "NodeType": "StringInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "4efdaa9f14d949b7a9c57d21f73c140e",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "InputValue": "NP_Tür_iBO_Funktion"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 709,
+      "SelectedString": "OST_Doors",
+      "Id": "89c32883829540b2a7d8a4304807ee84",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "61aadc770f0549f9b68edf648caf8dc7",
+          "Name": "Category",
+          "Description": "Die ausgewählte Kategorie",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Alle integrierten Kategorien"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "803b6a1bf42e49c78e372176bcb28b8c",
+      "End": "2339c3e50fa946f682d6ea2abb52ce57",
+      "Id": "b44961a4c19444e59f0e3faa1b187d73",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "c3777c63bd574857826b12cabb6996d3",
+      "End": "df6b0ff610cb4e8abeeb81cfde6f37fa",
+      "Id": "d9518aa6e5b147cabb8adc464885e47e",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "b6b77ac97c6d4cd5ae7888424e4015c6",
+      "End": "42f006746f344ff8965ba020a1471249",
+      "Id": "57ac89927bee4d378a504a91a31d145f",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "50c2458d936c442c84c140e8ea282e5c",
+      "End": "9dd50ad8448d466e9fcf540398a8f940",
+      "Id": "1a105cd4c72e423eac01c8e2a1d92a05",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "f7e1dc83b58b4122a6bdaffed562845b",
+      "End": "5a8a3b52c5d347d9a347fedd8206ee01",
+      "Id": "cfe7306a943f4ade8f0c276c1dd33a70",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "427f8175fb29434e8fb7d4a0a2600fd4",
+      "End": "becffa259cc1402a828741e09990b06e",
+      "Id": "fdf9f6f990044df7bbd36b19f16e51cf",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "4efdaa9f14d949b7a9c57d21f73c140e",
+      "End": "d4ccaab7f59648febee931d9ebf14f97",
+      "Id": "019a55e4e1bb4b6ba1f59b65804e426d",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "61aadc770f0549f9b68edf648caf8dc7",
+      "End": "f86ee841a4584e25817eeb9c5ff6f710",
+      "Id": "959fce722652465e9b6e24bcdf6a3d57",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Eigenschaften",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "3eeab3499e5c4b2591e42520385ecc45",
+        "Name": "Data.ImportExcel",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 2712.7138611922273,
+        "Y": 1124.557536084289
+      },
+      {
+        "Id": "ce8f4a84d37a4c939f2c37dd16c8d90b",
+        "Name": "Boolean",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 2396.4319887246079,
+        "Y": 1266.7249429464221
+      },
+      {
+        "Id": "674b40b596864fa8bbd124d61a7d7ca8",
+        "Name": "Date Ablage Ort (File path) - String",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1921.4143911744995,
+        "Y": 1123.4034606695034
+      },
+      {
+        "Id": "c9a79f3b4a4444819313c4fbcf7f8850",
+        "Name": "File From Path",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 2407.344320975255,
+        "Y": 1123.8067973736229
+      },
+      {
+        "Id": "2eee0d9ce0754b749d96ed218bd0b4ca",
+        "Name": "List.Flatten",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 3023.1681104808467,
+        "Y": 1124.7200025930676
+      },
+      {
+        "Id": "6af2506bd20f4bf7ae3a8b14fedd4313",
+        "Name": "Element.SetParameterByName",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 3393.6671252708707,
+        "Y": 922.53969466210378
+      },
+      {
+        "Id": "670328ab57034caab453ef9494852237",
+        "Name": "All Elements of Category",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 2942.8808077545796,
+        "Y": 760.85525483140646
+      },
+      {
+        "Id": "45c770f8f9d8463ba502ab0507f5a7e0",
+        "Name": "Zielparameter - String",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 2962.1239935145431,
+        "Y": 960.9162721659286
+      },
+      {
+        "Id": "89c32883829540b2a7d8a4304807ee84",
+        "Name": "Categories",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 2549.5882384165293,
+        "Y": 762.10060200350256
+      }
+    ],
+    "Annotations": [],
+    "X": -970.10780200839554,
+    "Y": 89.92115905527487,
+    "Zoom": 0.56721348605959809
+  }
+}

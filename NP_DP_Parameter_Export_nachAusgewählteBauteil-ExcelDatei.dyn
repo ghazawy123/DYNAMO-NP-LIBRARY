@@ -1,0 +1,417 @@
+{
+  "Uuid": "9ce0d961-c7de-42fd-83dc-c859df4bbe57",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "NP_DP_Parameter_Export_nachBauteil-ExcelDatei",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "173630e9533d4cbab8c8e5279a6b543f",
+      "Name": "Select Model Elements",
+      "Type": "selection",
+      "Type2": "hostSelection",
+      "Value": "",
+      "Description": "Auswahl mehrerer Elemente aus dem Revit-Dokument",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementsSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [],
+      "Id": "173630e9533d4cbab8c8e5279a6b543f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5de63d37b63145abb4981a2b627d58ab",
+          "Name": "Elements",
+          "Description": "Die ausgewählten Elemente",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Auswahl mehrerer Elemente aus dem Revit-Dokument"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "17841755f94947729d6ccccedfb66228",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "e3647839ecdd46378c317ea6039166c0",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "580f4ac727b74df2951b237593a1c13e",
+          "Name": "Parameter[]",
+          "Description": "Parameter[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.Element.Parameters",
+      "Replication": "Auto",
+      "Description": "Rufen Sie alle Parameter aus einem Element sortiert nach Namen ab.\n\nElement.Parameters: Parameter[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "d91ec4613d6b4c6ebfd977d859ca8db1",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "7559181e43e6412684dc81c0b452517a",
+          "Name": "filePath",
+          "Description": "Datei mit der Excel-Arbeitsmappe\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c51251c105604e77bc959ea156bf8341",
+          "Name": "sheetName",
+          "Description": "Name des Arbeitsblatts, das Daten enthält\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "52b7788c1676425b8207734cff22cf3e",
+          "Name": "startRow",
+          "Description": "Startzeile zum Schreiben von Daten. Geben Sie 0 für Zeile 1, 1 für Zeile 2 usw. ein.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "77606ac045294ea98e5b4d4c615c2790",
+          "Name": "startColumn",
+          "Description": "Startspalte zum Schreiben von Daten. Geben Sie 0 für Spalte A, 1 für Spalte B usw. ein.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "81710ead9b3c494da5ca9b38cfa56c22",
+          "Name": "data",
+          "Description": "Die in die Tabelle zu schreibenden Daten\n\nvar[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "33f30c6d9d484e29bb71483e9ad4ec31",
+          "Name": "overWrite",
+          "Description": "Löschen der Tabelle vor dem Schreiben ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e46900198045436aa7e464b8102ea8e5",
+          "Name": "writeAsString",
+          "Description": "Excel-Datei als Zeichenfolgen schreiben ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0b83a41a4e584dba9129ea65bb6d2a25",
+          "Name": "data",
+          "Description": "Zeilen mit Daten aus dem Excel-Arbeitsblatt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSOffice.Data.ExportToExcel@string,string,int,int,var[][],bool,bool",
+      "Replication": "Auto",
+      "Description": "Schreibt Daten in eine Microsoft Excel-Tabelle. Die Daten werden nach Zeilen geschrieben, wobei Unterlisten in aufeinander folgende Zeilen geschrieben werden. Zeilen und Spalten sind nullindiziert. Beispiel: Der Wert an Position [0,0] in der Datenliste wird in Zelle A1 geschrieben. Nullwerte und leere Listen werden als leere Zellen in Excel geschrieben. Für diesen Block muss Microsoft Excel installiert sein.\n\nData.ExportToExcel (filePath: string, sheetName: string, startRow: int, startColumn: int, data: var[][], overWrite: bool = false, writeAsString: bool = false): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "Id": "85a4d0b89a4145e498e213b3d5aa6f9c",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "21a7287a647e489799c103a153ac3ef3",
+          "Name": "",
+          "Description": "Dateipfad",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System und gibt ihren Dateipfad zurück",
+      "HintPath": "Keine Datei ausgewählt.",
+      "InputValue": "Keine Datei ausgewählt."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "Id": "75d4177950474f5690203698d85c155c",
+      "NodeType": "StringInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d14bf729a2ba4cc8b220e0dec5bc33de",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "InputValue": "Parameter Liste"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NumberType": "Double",
+      "MaximumValue": 100.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.1,
+      "Id": "2017f922e90d4ad0847ba5fa8f65a598",
+      "NodeType": "NumberInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "74386682b4274b8bb2b5d1fbd925af30",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erzeugt numerische Werte",
+      "InputValue": 0.0
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "Id": "b62b890ab0734577b76792fc93688fb4",
+      "NodeType": "BooleanInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f5f61db4908c4fc48338a7d312c2436c",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl zwischen True und False",
+      "InputValue": true
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "5de63d37b63145abb4981a2b627d58ab",
+      "End": "e3647839ecdd46378c317ea6039166c0",
+      "Id": "5a61f446e42446f1898214af5b390a8b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "580f4ac727b74df2951b237593a1c13e",
+      "End": "81710ead9b3c494da5ca9b38cfa56c22",
+      "Id": "6803b8ba0970411cab31cedafd688798",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "21a7287a647e489799c103a153ac3ef3",
+      "End": "7559181e43e6412684dc81c0b452517a",
+      "Id": "3dd0f5ddb0ec4bf6808963603b4e4190",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d14bf729a2ba4cc8b220e0dec5bc33de",
+      "End": "c51251c105604e77bc959ea156bf8341",
+      "Id": "663430deccfc4b1db541e879b4eba949",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "74386682b4274b8bb2b5d1fbd925af30",
+      "End": "52b7788c1676425b8207734cff22cf3e",
+      "Id": "b25f097241be4d5b8861692fd75f82c5",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "74386682b4274b8bb2b5d1fbd925af30",
+      "End": "77606ac045294ea98e5b4d4c615c2790",
+      "Id": "e220306e2d404a32af2dd77bb24d1d4d",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "f5f61db4908c4fc48338a7d312c2436c",
+      "End": "33f30c6d9d484e29bb71483e9ad4ec31",
+      "Id": "300e3a4ba2824a50b44f2c855f0df623",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "f5f61db4908c4fc48338a7d312c2436c",
+      "End": "e46900198045436aa7e464b8102ea8e5",
+      "Id": "c286ff2c067644d89abda66fe8af9c9a",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Eigenschaften",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "173630e9533d4cbab8c8e5279a6b543f",
+        "Name": "Select Model Elements",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 468.24506436071772,
+        "Y": 907.363873532749
+      },
+      {
+        "Id": "17841755f94947729d6ccccedfb66228",
+        "Name": "Element.Parameters",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 821.37495700649106,
+        "Y": 908.41386370558428
+      },
+      {
+        "Id": "d91ec4613d6b4c6ebfd977d859ca8db1",
+        "Name": "Data.ExportToExcel",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1230.0119680379553,
+        "Y": 441.54902490904556
+      },
+      {
+        "Id": "85a4d0b89a4145e498e213b3d5aa6f9c",
+        "Name": "File Path",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 885.08626911160059,
+        "Y": 162.79405835852077
+      },
+      {
+        "Id": "75d4177950474f5690203698d85c155c",
+        "Name": "String",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 931.71689527373758,
+        "Y": 311.13053155330277
+      },
+      {
+        "Id": "2017f922e90d4ad0847ba5fa8f65a598",
+        "Name": "Number Slider",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 770.20938458519072,
+        "Y": 455.11791541878296
+      },
+      {
+        "Id": "b62b890ab0734577b76792fc93688fb4",
+        "Name": "Boolean",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 927.26638451251779,
+        "Y": 627.08539002275529
+      }
+    ],
+    "Annotations": [],
+    "X": -295.84563429669726,
+    "Y": 55.486065124918355,
+    "Zoom": 0.75688954891333715
+  }
+}

@@ -1,0 +1,291 @@
+{
+  "Uuid": "e9159959-fa19-4622-b69f-64a3326a69b6",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "NP_DP_Bearbeitungsbereich_Isolieren_AktuellAnsicht-nachKategorie",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "11e1a31dfba14167b693ac12b257d22f",
+      "Name": "Bearebitungsbereich - String",
+      "Type": "string",
+      "Type2": "string",
+      "Value": "03 Türen",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "994a11aa-6bd7-4023-bb3d-f1eac229b419",
+      "FunctionType": "Graph",
+      "Id": "3cffb79ad16a463bb94cbde962a3670c",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "5298408f75b24057a075d4c77c9ba8bc",
+          "Name": "views",
+          "Description": "View or list of views to\nisolate the worksets in.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b57260615fa3469ab6773c0a9860df6f",
+          "Name": "worksets",
+          "Description": "List of worksets and/or\nworkset names to isolate.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6fe5910bc15247d4afae8d317a2a053d",
+          "Name": "wasRun",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Given a list of views and a list of worksets or workset names, attempts to isolate them all in those views."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "66d838bd-7dd6-48c6-86b9-5d5f88424b70",
+      "FunctionType": "Graph",
+      "Id": "1f51976ffa7d4b3babc12d3fff0b1a17",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "65d78199e82145378d25bbc88e3d62c9",
+          "Name": "refresh",
+          "Description": "bool\nVorgabewert : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "aaed5e9fcf664ce896afd5aad180de67",
+          "Name": "activeView",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Given the current document, return the active view."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "b1542e01-9084-4a66-aa92-b80f6400277a",
+      "FunctionType": "Graph",
+      "Id": "c7402123aaa44b6a812519d72dff456b",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "dd8930ee4bd1425882d6e863f2e1d97c",
+          "Name": "WorksetName",
+          "Description": "string[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4475b91c6c8e40feaaf45b40cd34fbcb",
+          "Name": "Workset",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a1446bcea915483e8f6dcaa3616f0d58",
+          "Name": "Id",
+          "Description": "Integer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Retrieves the workset by the given name."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "Id": "11e1a31dfba14167b693ac12b257d22f",
+      "NodeType": "StringInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "dacbcf43847345319914c8ba58c0cbc0",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "InputValue": "03 Türen"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "aaed5e9fcf664ce896afd5aad180de67",
+      "End": "5298408f75b24057a075d4c77c9ba8bc",
+      "Id": "312245a6fd6f40718d82046135dbf572",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "4475b91c6c8e40feaaf45b40cd34fbcb",
+      "End": "b57260615fa3469ab6773c0a9860df6f",
+      "Id": "b89d13c1876e4f5e8e686bd8032a46f5",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "dacbcf43847345319914c8ba58c0cbc0",
+      "End": "dd8930ee4bd1425882d6e863f2e1d97c",
+      "Id": "9b9bdb641be34489bdf4a00bde19f2f2",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [
+    "994a11aa-6bd7-4023-bb3d-f1eac229b419",
+    "66d838bd-7dd6-48c6-86b9-5d5f88424b70",
+    "b1542e01-9084-4a66-aa92-b80f6400277a"
+  ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Crumple",
+      "Version": "2024.4.3",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "3cffb79ad16a463bb94cbde962a3670c",
+        "1f51976ffa7d4b3babc12d3fff0b1a17"
+      ]
+    },
+    {
+      "Name": "Genius Loci",
+      "Version": "2024.5.29",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "c7402123aaa44b6a812519d72dff456b"
+      ]
+    }
+  ],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Eigenschaften",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "3cffb79ad16a463bb94cbde962a3670c",
+        "Name": "© Worksets.IsolateInView",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1487.5650909058681,
+        "Y": 1875.19343961726
+      },
+      {
+        "Id": "1f51976ffa7d4b3babc12d3fff0b1a17",
+        "Name": "© Revit.CurrentView",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 708.35866563013008,
+        "Y": 1884.6944734641386
+      },
+      {
+        "Id": "c7402123aaa44b6a812519d72dff456b",
+        "Name": "Workset ByName",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 697.12868170743013,
+        "Y": 2138.311660975427
+      },
+      {
+        "Id": "11e1a31dfba14167b693ac12b257d22f",
+        "Name": "Bearebitungsbereich - String",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 322.04324738156265,
+        "Y": 2135.0865580817426
+      }
+    ],
+    "Annotations": [],
+    "X": -127.64760906607552,
+    "Y": -645.8232639390767,
+    "Zoom": 0.70856693912300883
+  }
+}

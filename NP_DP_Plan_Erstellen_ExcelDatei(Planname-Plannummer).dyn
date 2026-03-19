@@ -1,0 +1,646 @@
+{
+  "Uuid": "f4cf8bea-bad7-410d-bb68-760c1239447e",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "NP_DP_Plan_Erstellen_ExcelDatei(Planname-Plannummer)",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "f359a529f35042dbbed8ce7b37f1fdb2",
+      "Name": "Excel Datei Auswähle - File Path",
+      "Type": "string",
+      "Type2": "string",
+      "Value": "C:\\Users\\m.elsayed\\OneDrive - Nickl-Architekten\\Desktop\\Scripts\\Excel Sheets\\Create sheets test.xlsx",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System und gibt ihren Dateipfad zurück",
+      "SelectedIndex": 0
+    },
+    {
+      "Id": "4c9c1f23d4494caf97d8d147d3fc4a65",
+      "Name": "Excel Tabelle Name - String",
+      "Type": "string",
+      "Type2": "string",
+      "Value": "Tabelle1",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "4040d06805a64a0b89f02dbeee43dc85",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "953d35c886a54c4d9632beb81ba02abb",
+          "Name": "file",
+          "Description": "Datei mit der Excel-Arbeitsmappe\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "68bbc4ee01c7430e97b90953dfc61f88",
+          "Name": "sheetName",
+          "Description": "Name des Arbeitsblatts, das Daten enthält\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f1e2f994b20142568991194c50399252",
+          "Name": "readAsStrings",
+          "Description": "Lesen von Zellen als Zeichenfolgen ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "02efb9664bf74b59b1ad403f56b7a402",
+          "Name": "showExcel",
+          "Description": "Anzeigen des Excel-Hauptfensters ein/aus\n\nbool\nVorgabewert : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1bc85e4165ab4ba2ab9e5227668dc1b1",
+          "Name": "data",
+          "Description": "Zeilen mit Daten aus dem Excel-Arbeitsblatt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSOffice.Data.ImportExcel@var,string,bool,bool",
+      "Replication": "Auto",
+      "Description": "Liest Daten aus einer Microsoft Excel-Tabelle. Daten werden nach Zeilen gelesen und in einer Reihe von Listen nach Zeilen ausgegeben. Zeilen und Spalten sind nullbasiert indiziert; Beispiel: Der Wert aus Zelle A1 erscheint in der Liste an Position [0,0]. Für diesen Knoten muss Microsoft Excel installiert sein.\n\nData.ImportExcel (file: var, sheetName: string, readAsStrings: bool = false, showExcel: bool = true): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "Id": "adf3034fd04a4ba3bc091ea925639ed7",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "9425ee4bbed145158cc4f6eacab9639e",
+          "Name": "path",
+          "Description": "Pfad zur Datei als Zeichenfolge.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "87fae57934a841548045023e2069d233",
+          "Name": "file",
+          "Description": "Dateiobjekt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt ein Dateiobjekt aus dem angegebenen Pfad"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "Id": "f359a529f35042dbbed8ce7b37f1fdb2",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7da534dc05bd447f963772bb38182e4a",
+          "Name": "",
+          "Description": "Dateipfad",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System und gibt ihren Dateipfad zurück",
+      "HintPath": "C:\\Users\\m.elsayed\\OneDrive - Nickl-Architekten\\Desktop\\Scripts\\Excel Sheets\\Create sheets test.xlsx",
+      "InputValue": "C:\\Users\\m.elsayed\\OneDrive - Nickl-Architekten\\Desktop\\Scripts\\Excel Sheets\\Create sheets test.xlsx"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "Id": "4c9c1f23d4494caf97d8d147d3fc4a65",
+      "NodeType": "StringInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "06996224869e40a489ea91fc0b7158e5",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "InputValue": "Tabelle1"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "aca24928cc33427891f7041372407966",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "3e5a0e80702d424ab617ac6ba58faf73",
+          "Name": "lists",
+          "Description": "Liste der umzustellenden Listen\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "95dcb8af3b514b15a6a289a0d445286a",
+          "Name": "lists",
+          "Description": "Liste der umgestellten Listen",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.List.Transpose@var[]..[]",
+      "Replication": "Auto",
+      "Description": "Vertauscht Zeilen und Spalten in einer Liste von Listen. Wenn einige Zeilen kürzer als die übrigen sind, werden Nullwerte als Platzhalter in das resultierende Array eingefügt, sodass dieses immer rechteckig ist.\n\nList.Transpose (lists: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "Id": "698bd029f9e94efca6a506a3b8a4b692",
+      "NodeType": "BooleanInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "170f3961584e4834b4cc73c676efee5c",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl zwischen True und False",
+      "InputValue": false
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "Id": "c6b7f5677c784f809580c2fdfbc405a9",
+      "NodeType": "CodeBlockNode",
+      "Inputs": [
+        {
+          "Id": "004a030c3dfd4c6db03cf102b9f4a689",
+          "Name": "SheetName",
+          "Description": "SheetName",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c01bad9ace534535a59ef91b1034a90b",
+          "Name": "SheetNumber",
+          "Description": "SheetNumber",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "19af02d719b34acebc6f5e0565fe33e6",
+          "Name": "ViewNames",
+          "Description": "ViewNames",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a5a99b97a1594ea29d487a6d8d5ec4aa",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f220e3749fbc419c9f4787f4a8f54eff",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "89bbf75b1a3847a38e8145b1ca99e8a7",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code.",
+      "Code": "SheetName[0];\nSheetNumber[1];\nViewNames[2];"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "0faef98ffe3a41508e8e9d134d294f7d",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "11cc348fc3734a0fb23b33e9668aa869",
+          "Name": "name",
+          "Description": "Der Name des FamilyType\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "81bb4627712f442e8f22e76697bbcd3d",
+          "Name": "FamilyType",
+          "Description": "FamilyType",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.FamilyType.ByName@string",
+      "Replication": "Auto",
+      "Description": "Wählt einen FamilyType nach Angabe seines Namens. Falls zwei oder mehr FamilyType-Elemente mit demselben Namen vorhanden sind, gibt diese Methode den ersten FamilyType zurück.\n\nFamilyType.ByName (name: string): FamilyType"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "Id": "eabd748390d34c7b9a4335b890ab9972",
+      "NodeType": "StringInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8025c45352b04e508604ec5cfaeea244",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "InputValue": "1700x841"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "Id": "de04c61745124ae4982a77195cf781b3",
+      "NodeType": "BooleanInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ad38ab8b1fef42ab95002996d621a3ec",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl zwischen True und False",
+      "InputValue": true
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "f7ad87be29bc4e388d288d47a3cf989d",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "69e526c6a11a48b29da466577ca62cc2",
+          "Name": "sheetName",
+          "Description": "Planname als Zeichenfolge.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c4c621a8cf6f416aa6738847b1a8dce9",
+          "Name": "sheetNumber",
+          "Description": "Plannummer als Zeichenfolge.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c3db2639d68b41418a7d8bb54041ce57",
+          "Name": "titleBlockFamilyType",
+          "Description": "Plankopf, der erstelltem Plan zugewiesen wird.\n\nFamilyType",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9039b61317ff445e987f78d73e62a9fc",
+          "Name": "Sheet",
+          "Description": "Der neue leere Revit-Plan.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.Views.Sheet.ByNameNumberTitleBlock@string,string,Revit.Elements.FamilyType",
+      "Replication": "Auto",
+      "Description": "Erstellt einen Revit-Plan anhand von Planname, Nummer und FamilyType des Plankopfs.\n\nSheet.ByNameNumberTitleBlock (sheetName: string, sheetNumber: string, titleBlockFamilyType: FamilyType): Sheet"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "1bc85e4165ab4ba2ab9e5227668dc1b1",
+      "End": "3e5a0e80702d424ab617ac6ba58faf73",
+      "Id": "66673b571ba1469090f40a1572e92f5b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "87fae57934a841548045023e2069d233",
+      "End": "953d35c886a54c4d9632beb81ba02abb",
+      "Id": "24832f1e9d59445394d42e35fa5a4e33",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "7da534dc05bd447f963772bb38182e4a",
+      "End": "9425ee4bbed145158cc4f6eacab9639e",
+      "Id": "b39bb218ca464d65ab0f24a272a7a15c",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "06996224869e40a489ea91fc0b7158e5",
+      "End": "68bbc4ee01c7430e97b90953dfc61f88",
+      "Id": "36f7fd693d184bfaa1dc3ec8297f7b41",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "95dcb8af3b514b15a6a289a0d445286a",
+      "End": "004a030c3dfd4c6db03cf102b9f4a689",
+      "Id": "0824ef543a844aaaa21be48aa4801d9f",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "95dcb8af3b514b15a6a289a0d445286a",
+      "End": "c01bad9ace534535a59ef91b1034a90b",
+      "Id": "54aa7ee961024353820b9ada970f4c86",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "95dcb8af3b514b15a6a289a0d445286a",
+      "End": "19af02d719b34acebc6f5e0565fe33e6",
+      "Id": "4da135a1e1f841ae8d818bbdbc6d7e0b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "170f3961584e4834b4cc73c676efee5c",
+      "End": "02efb9664bf74b59b1ad403f56b7a402",
+      "Id": "742750dd92ee4e9a8264da90b1214135",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "a5a99b97a1594ea29d487a6d8d5ec4aa",
+      "End": "69e526c6a11a48b29da466577ca62cc2",
+      "Id": "3b47e119243648b891a956464ebfe274",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "f220e3749fbc419c9f4787f4a8f54eff",
+      "End": "c4c621a8cf6f416aa6738847b1a8dce9",
+      "Id": "53964263be3645abac2c6d1eb621ca2b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "81bb4627712f442e8f22e76697bbcd3d",
+      "End": "c3db2639d68b41418a7d8bb54041ce57",
+      "Id": "7393db97f11f44a89d40e3a008038ded",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "8025c45352b04e508604ec5cfaeea244",
+      "End": "11cc348fc3734a0fb23b33e9668aa869",
+      "Id": "b1980741ef374f98893629e2bd562f7d",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "ad38ab8b1fef42ab95002996d621a3ec",
+      "End": "f1e2f994b20142568991194c50399252",
+      "Id": "e0b3901e6b3c4cc4bf159ce812bec5e2",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Create sheets test.xlsx",
+      "ReferenceType": "External",
+      "Nodes": [
+        "f359a529f35042dbbed8ce7b37f1fdb2"
+      ]
+    }
+  ],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Eigenschaften",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "4040d06805a64a0b89f02dbeee43dc85",
+        "Name": "Data.ImportExcel",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 141.30059867185673,
+        "Y": 565.0862305472948
+      },
+      {
+        "Id": "adf3034fd04a4ba3bc091ea925639ed7",
+        "Name": "File From Path",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -153.1963026827932,
+        "Y": 385.69641638865738
+      },
+      {
+        "Id": "f359a529f35042dbbed8ce7b37f1fdb2",
+        "Name": "Excel Datei Auswähle - File Path",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -820.0,
+        "Y": 388.0
+      },
+      {
+        "Id": "4c9c1f23d4494caf97d8d147d3fc4a65",
+        "Name": "Excel Tabelle Name - String",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -271.70111965772958,
+        "Y": 554.376875657055
+      },
+      {
+        "Id": "aca24928cc33427891f7041372407966",
+        "Name": "List.Transpose",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 414.8664166441597,
+        "Y": 708.070146540165
+      },
+      {
+        "Id": "698bd029f9e94efca6a506a3b8a4b692",
+        "Name": "Boolean",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -131.19343456557078,
+        "Y": 848.75705891600387
+      },
+      {
+        "Id": "c6b7f5677c784f809580c2fdfbc405a9",
+        "Name": "Code Block",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 749.11896811298607,
+        "Y": 687.70550061853169
+      },
+      {
+        "Id": "0faef98ffe3a41508e8e9d134d294f7d",
+        "Name": "FamilyType.ByName",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1012.672632291084,
+        "Y": 977.97099132974927
+      },
+      {
+        "Id": "eabd748390d34c7b9a4335b890ab9972",
+        "Name": "String",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 761.03489711250609,
+        "Y": 978.89641939390458
+      },
+      {
+        "Id": "de04c61745124ae4982a77195cf781b3",
+        "Name": "Boolean",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -144.68095207444105,
+        "Y": 703.85331302387283
+      },
+      {
+        "Id": "f7ad87be29bc4e388d288d47a3cf989d",
+        "Name": "Sheet.ByNameNumberTitleBlock",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1505.9203988229251,
+        "Y": 667.90879575484882
+      }
+    ],
+    "Annotations": [],
+    "X": 445.659798915602,
+    "Y": 197.12442926305209,
+    "Zoom": 0.43832256614128762
+  }
+}

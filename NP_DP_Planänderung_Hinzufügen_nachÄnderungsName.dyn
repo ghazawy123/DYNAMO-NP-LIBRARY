@@ -1,0 +1,1161 @@
+{
+  "Uuid": "e38dc81a-6091-40f6-a295-1bdd9f07a4dd",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "NP_DP_Planänderung_Hinzufügen_nachÄnderungsName",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "List": {
+        "Key": "List",
+        "Value": "BuiltIn.ds"
+      },
+      "Dictionary": {
+        "Key": "DesignScript.Builtin.Dictionary",
+        "Value": "DesignScriptBuiltin.dll"
+      },
+      "Rhythm.Elements": {
+        "Key": "Rhythm.Revit.Elements.Elements",
+        "Value": "RhythmRevit.dll"
+      },
+      "Rhythm.Revit.Elements.Elements": {
+        "Key": "Rhythm.Revit.Elements.Elements",
+        "Value": "RhythmRevit.dll"
+      },
+      "DateTime": {
+        "Key": "DSCore.DateTime",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [
+    {
+      "Id": "9e0ec9d0b2894a4fa6b26bf650eb0751",
+      "Name": "Plannummer als Excel Datei - File Path",
+      "Type": "string",
+      "Type2": "string",
+      "Value": "C:\\Users\\m.elsayed\\OneDrive - Nickl-Architekten\\Desktop\\Scripts\\Excel Sheets\\sheets test.xlsx",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System und gibt ihren Dateipfad zurück",
+      "SelectedIndex": 0
+    },
+    {
+      "Id": "3ef4f8422ea3415ab6b2b2fc67e4dc07",
+      "Name": "Planänderung - Select Revision",
+      "Type": "selection",
+      "Type2": "dropdownSelection",
+      "Value": "Seq. 105 - Abstimmung Türübersichten BH",
+      "Description": "Wählen Sie eine vorhandene Revit-Änderung im aktiven Dokument.",
+      "SelectedIndex": 7
+    },
+    {
+      "Id": "2f350234382547ad84cab518c06c1552",
+      "Name": "Excel Datei Tabelle Name - String",
+      "Type": "string",
+      "Type2": "string",
+      "Value": "Tabelle1",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
+    },
+    {
+      "Id": "1d470d15241146b5b232c24686d83dcc",
+      "Name": "Plannummer Parametername - String",
+      "Type": "string",
+      "Type2": "string",
+      "Value": "Plannummer",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "Id": "9e0ec9d0b2894a4fa6b26bf650eb0751",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "95bfc0926f3d425fb93eb06e3333511d",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System und gibt ihren Dateipfad zurück",
+      "HintPath": "C:\\Users\\m.elsayed\\OneDrive - Nickl-Architekten\\Desktop\\Scripts\\Excel Sheets\\sheets test.xlsx",
+      "InputValue": "C:\\Users\\m.elsayed\\OneDrive - Nickl-Architekten\\Desktop\\Scripts\\Excel Sheets\\sheets test.xlsx"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 502,
+      "SelectedString": "OST_Sheets",
+      "Id": "21f2e4172431481f92c7ff2a6e64d841",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "79d2bce078d4441390195b67d3c4f20f",
+          "Name": "Category",
+          "Description": "Die ausgewählte Kategorie",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Alle integrierten Kategorien"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "Id": "9778789c7f544d7892a40b6583d49191",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "216452bd6bfb4a3c8523d1dfb54dafc4",
+          "Name": "Category",
+          "Description": "Die Kategorie",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e3d388fd23bd409fb6031b2413e86d80",
+          "Name": "Elements",
+          "Description": "Ein Elementtyp",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ruft alle Elemente der angegebenen Kategorie aus dem Modell ab."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "2d9916711b504aa88ed04d0da28ea6b7",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "2182ab29810c41c9a356eae558397484",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bdbbaeddd3b747be9947b43a6a1bf972",
+          "Name": "parameterName",
+          "Description": "Der Name des Parameters, dessen Wert Sie abrufen möchten\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9d5674176cb24fafa842852d6cf5e48d",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.Element.GetParameterValueByName@string",
+      "Replication": "Auto",
+      "Description": "Ruft den Wert eines der Parameter für das Element ab.\n\nElement.GetParameterValueByName (parameterName: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "44d70c0d7c9940c9973fad3e70bea95f",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "8df6a77b5c5949839e8f55a5b06bd73c",
+          "Name": "list",
+          "Description": "Zu filternde Liste\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dedf4a2b237f435b975c475a225af4de",
+          "Name": "mask",
+          "Description": "Liste der booleschen Ausdrücke, die eine Maske darstellen\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cd111477657647b2934adf48d0fe82bb",
+          "Name": "in",
+          "Description": "Elemente mit Maskenindex true",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6e29ab1233a24e3aa9ff786b2cc8b3d9",
+          "Name": "out",
+          "Description": "Elemente mit Maskenindex false",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Replication": "Auto",
+      "Description": "Filtert eine Sequenz durch Abrufen entsprechender Indizes in einer separaten Liste boolescher Werte.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "Code": "A=IN[0]\r\nB=IN[1]\r\n\r\nS=[]\r\nfor a in A:\r\n\tif a in B:\r\n\t\tS.append(True)\r\n\telse:\r\n\t\tS.append(False)\r\nOUT=S",
+      "Engine": "IronPython2",
+      "EngineName": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "ca97ceacab624bb7a4aa6c052dd758df",
+      "NodeType": "PythonScriptNode",
+      "Inputs": [
+        {
+          "Id": "7ad5e671f2784fdea6a8be576c88574e",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7024e0987a2840d7bfc3fa21d88a9f7f",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1385823348c04149b0c2a1c99139daa3",
+          "Name": "OUT",
+          "Description": "Ergebnis des Python-Skripts",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Führt ein eingebettetes Python-Skript aus."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.RevitRevisions, DSRevitNodesUI",
+      "SelectedIndex": 7,
+      "SelectedString": "Seq. 105 - Abstimmung Türübersichten BH",
+      "Id": "3ef4f8422ea3415ab6b2b2fc67e4dc07",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e5e31ea0ae5d4f6581a06bd5856bc525",
+          "Name": "Revision",
+          "Description": "Die ausgewählte Revision",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Wählen Sie eine vorhandene Revit-Änderung im aktiven Dokument."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "Id": "fc03aa4d8d82488795827296a2c37c67",
+      "NodeType": "BooleanInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c36d92dad1d6497a8371c184643723c0",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl zwischen True und False",
+      "InputValue": true
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "ebf5a6be4e8e4581866f16b41c3938c7",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "341ead071fb440beae44612a98522985",
+          "Name": "sheet",
+          "Description": "View Sheet.\n\nSheet",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6efb63fc7a2540c68b7a371cf0b0e1ea",
+          "Name": "Element",
+          "Description": "Revisions on Sheet.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "archilab.Revit.Views.Sheets.Revisions@Revit.Elements.Views.Sheet",
+      "Replication": "Auto",
+      "Description": "Revisions on Sheet.\n\nSheets.Revisions (sheet: Sheet): Element[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "90a635b29cfb4301b5d833ebb5676545",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "62a0abf39b0c456984c30d5e48925553",
+          "Name": "x",
+          "Description": "Basistypobjekt für den Vergleich (z. B. bool, int, double, string usw.)\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9a11a012d8b04434b79b532c0f30f7c5",
+          "Name": "y",
+          "Description": "Basistypobjekt für den Vergleich (z. B. bool, int, double, string usw.)\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "411f0f8064c049d3bd51b4febe12e976",
+          "Name": "bool",
+          "Description": "Ergebnis der Gleichheitsprüfung",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "==@var[]..[],var[]..[]",
+      "Replication": "Auto",
+      "Description": "Vergleicht, ob x und y gleich sind\n\n== (x: var[]..[], y: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "3b6ee167dee94323b1a30a2290702857",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "658161d181f74b859887491ff4f6b75c",
+          "Name": "list",
+          "Description": "Zu filternde Liste\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1ef55fbe46774c63af888319ac65f6eb",
+          "Name": "mask",
+          "Description": "Liste der booleschen Ausdrücke, die eine Maske darstellen\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3f2b5674c92d4747ba15507b5b2f4f4c",
+          "Name": "in",
+          "Description": "Elemente mit Maskenindex true",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "346ad77be2574d03ba42a133a1efb429",
+          "Name": "out",
+          "Description": "Elemente mit Maskenindex false",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Replication": "Auto",
+      "Description": "Filtert eine Sequenz durch Abrufen entsprechender Indizes in einer separaten Liste boolescher Werte.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "d2b5bdaeb75c4e6983d4186217d9eb75",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "929c83ad387146028e1a97a454572d3d",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c3299af3c300470488e88f5d39b419ad",
+          "Name": "int",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.Element.Id",
+      "Replication": "Auto",
+      "Description": "Ruft die Element-ID für dieses Element ab.\n\nElement.Id: int"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "b18205d77a4f461099044d2e6f5f5133",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "044f6a1a55d94a049be9fc8b79508324",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "65ab37249d9b439aad0f563076e2c854",
+          "Name": "int",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.Element.Id",
+      "Replication": "Auto",
+      "Description": "Ruft die Element-ID für dieses Element ab.\n\nElement.Id: int"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "7d5a2a9e301f4354b4da1ecd778029a1",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "a5ec0ea0cf4540b5b6bd6ab8a8f853ca",
+          "Name": "file",
+          "Description": "Datei mit der Excel-Arbeitsmappe\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2313f37da11e42adbaae53a222907b9a",
+          "Name": "sheetName",
+          "Description": "Name des Arbeitsblatts, das Daten enthält\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "22c8e86080bd48babf093f2d225ef60c",
+          "Name": "readAsStrings",
+          "Description": "Lesen von Zellen als Zeichenfolgen ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c331c705a23b4fdebf136add1fad0de4",
+          "Name": "showExcel",
+          "Description": "Anzeigen des Excel-Hauptfensters ein/aus\n\nbool\nVorgabewert : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3fe811c6357a436fb40cbeddc022d7b0",
+          "Name": "data",
+          "Description": "Zeilen mit Daten aus dem Excel-Arbeitsblatt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSOffice.Data.ImportExcel@var,string,bool,bool",
+      "Replication": "Auto",
+      "Description": "Liest Daten aus einer Microsoft Excel-Tabelle. Daten werden nach Zeilen gelesen und in einer Reihe von Listen nach Zeilen ausgegeben. Zeilen und Spalten sind nullbasiert indiziert; Beispiel: Der Wert aus Zelle A1 erscheint in der Liste an Position [0,0]. Für diesen Knoten muss Microsoft Excel installiert sein.\n\nData.ImportExcel (file: var, sheetName: string, readAsStrings: bool = false, showExcel: bool = true): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "Id": "2f350234382547ad84cab518c06c1552",
+      "NodeType": "StringInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "92ede60d95c5456c9f2d694b6351b8da",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "InputValue": "Tabelle1"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "Id": "5f368262904e47b5b9e44eba3223f28d",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "48ef5aa8db8e47e49120a546ac6214b2",
+          "Name": "path",
+          "Description": "Pfad zur Datei als Zeichenfolge.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7bd5aca1b0b04c168acc9a8e801c41da",
+          "Name": "file",
+          "Description": "Dateiobjekt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt ein Dateiobjekt aus dem angegebenen Pfad"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "aaaa06dd79bf4b59a423a82813d6fe04",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "7b6e4328a31c426d85d87076add5220d",
+          "Name": "lists",
+          "Description": "Liste der umzustellenden Listen\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "69ee6aa7636342f690e61777c44dc0f4",
+          "Name": "lists",
+          "Description": "Liste der umgestellten Listen",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.List.Transpose@var[]..[]",
+      "Replication": "Auto",
+      "Description": "Vertauscht Zeilen und Spalten in einer Liste von Listen. Wenn einige Zeilen kürzer als die übrigen sind, werden Nullwerte als Platzhalter in das resultierende Array eingefügt, sodass dieses immer rechteckig ist.\n\nList.Transpose (lists: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "Id": "c52d599d2c24444f84fc60b749baf42d",
+      "NodeType": "CodeBlockNode",
+      "Inputs": [
+        {
+          "Id": "e8c15913473f40b3870115ff9a89a0e5",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4c23c849f4384fb3ba60e5699c65a1d6",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code.",
+      "Code": "x[0];"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "Id": "b3753e6b1d8645a4aadb3fff227ececf",
+      "NodeType": "BooleanInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c143bcbe178144cfadb930bfd8cc5eb4",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl zwischen True und False",
+      "InputValue": true
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "Id": "1d470d15241146b5b232c24686d83dcc",
+      "NodeType": "StringInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d1539acb7291408dac98be0d59fb19bf",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "InputValue": "Plannummer"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "b489e87e-6c60-4887-ab3c-88ef8a099209",
+      "FunctionType": "Graph",
+      "Id": "2c896db1c6b04a23ba672e82fccbfb1c",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "f12fef8ad6084aa1a6bf88c2fa51815c",
+          "Name": "_sheet",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "363104541abd46ebb039bdac83e3310c",
+          "Name": "_revision",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "798cd214004f486b81081418072bba0d",
+          "Name": "_runIt",
+          "Description": "bool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1fc754d657804e1f8fab7d8dd86fb024",
+          "Name": "_sheet",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "This node will add specified revisions to a sheet. "
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "95bfc0926f3d425fb93eb06e3333511d",
+      "End": "48ef5aa8db8e47e49120a546ac6214b2",
+      "Id": "7cb01debed6744979b5c7840d42dc7e5",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "79d2bce078d4441390195b67d3c4f20f",
+      "End": "216452bd6bfb4a3c8523d1dfb54dafc4",
+      "Id": "b42ea544fbb94f5082ead40cf5a1bed3",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "e3d388fd23bd409fb6031b2413e86d80",
+      "End": "2182ab29810c41c9a356eae558397484",
+      "Id": "aeffa788ae934efea0384160a3b73f08",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "e3d388fd23bd409fb6031b2413e86d80",
+      "End": "8df6a77b5c5949839e8f55a5b06bd73c",
+      "Id": "fdd8921909164ca2b4aa70d12bea14b1",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "9d5674176cb24fafa842852d6cf5e48d",
+      "End": "7ad5e671f2784fdea6a8be576c88574e",
+      "Id": "f390080c31bd4cb09ea607c530e1520b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "cd111477657647b2934adf48d0fe82bb",
+      "End": "341ead071fb440beae44612a98522985",
+      "Id": "d8fa30e245ee4ac0a43ebf11a99b0328",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "cd111477657647b2934adf48d0fe82bb",
+      "End": "f12fef8ad6084aa1a6bf88c2fa51815c",
+      "Id": "ea085bb20ed64033bb54a38734495cb0",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "1385823348c04149b0c2a1c99139daa3",
+      "End": "dedf4a2b237f435b975c475a225af4de",
+      "Id": "44a44f3ed8504d5c9e6f7257ea2f9706",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "e5e31ea0ae5d4f6581a06bd5856bc525",
+      "End": "044f6a1a55d94a049be9fc8b79508324",
+      "Id": "0c1dab10eb794890825f7ef5f5bee822",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "c36d92dad1d6497a8371c184643723c0",
+      "End": "798cd214004f486b81081418072bba0d",
+      "Id": "6e91c4c58d3541cba85e9072aede29ad",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "6efb63fc7a2540c68b7a371cf0b0e1ea",
+      "End": "658161d181f74b859887491ff4f6b75c",
+      "Id": "b2d81d1433854379bf158df8be2dd083",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "6efb63fc7a2540c68b7a371cf0b0e1ea",
+      "End": "929c83ad387146028e1a97a454572d3d",
+      "Id": "d32e9f5337e84fd4824b19d405c82a1b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "411f0f8064c049d3bd51b4febe12e976",
+      "End": "1ef55fbe46774c63af888319ac65f6eb",
+      "Id": "2822933872364a62a7155e28f0611961",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "3f2b5674c92d4747ba15507b5b2f4f4c",
+      "End": "363104541abd46ebb039bdac83e3310c",
+      "Id": "1a80dc0a072d4016a2bc9a7f6199294c",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "c3299af3c300470488e88f5d39b419ad",
+      "End": "62a0abf39b0c456984c30d5e48925553",
+      "Id": "ae4a9b379a2541bf85af0cdf50e9118a",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "65ab37249d9b439aad0f563076e2c854",
+      "End": "9a11a012d8b04434b79b532c0f30f7c5",
+      "Id": "febdfd607098409c87af31b6b7dddc5c",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "3fe811c6357a436fb40cbeddc022d7b0",
+      "End": "7b6e4328a31c426d85d87076add5220d",
+      "Id": "ee0422828f894005b48e33d77e0d620b",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "92ede60d95c5456c9f2d694b6351b8da",
+      "End": "2313f37da11e42adbaae53a222907b9a",
+      "Id": "928df28d2f77499ebd83d4e89b0e96a7",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "7bd5aca1b0b04c168acc9a8e801c41da",
+      "End": "a5ec0ea0cf4540b5b6bd6ab8a8f853ca",
+      "Id": "e271f317f1254ce494dcf8321b89eb47",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "69ee6aa7636342f690e61777c44dc0f4",
+      "End": "e8c15913473f40b3870115ff9a89a0e5",
+      "Id": "5a8920ace6174e6e80d0ab7cd6a41156",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "4c23c849f4384fb3ba60e5699c65a1d6",
+      "End": "7024e0987a2840d7bfc3fa21d88a9f7f",
+      "Id": "03b2ee363b284b2ea09a6f1cef5ff75d",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "c143bcbe178144cfadb930bfd8cc5eb4",
+      "End": "22c8e86080bd48babf093f2d225ef60c",
+      "Id": "848e3d0cdd9847c18f70fb17f358b502",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d1539acb7291408dac98be0d59fb19bf",
+      "End": "bdbbaeddd3b747be9947b43a6a1bf972",
+      "Id": "6e5e968412cf43308cf957cfc87eed4d",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [
+    "b489e87e-6c60-4887-ab3c-88ef8a099209"
+  ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "archi-lab.net",
+      "Version": "2025.300.1225",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "ebf5a6be4e8e4581866f16b41c3938c7",
+        "2c896db1c6b04a23ba672e82fccbfb1c"
+      ]
+    }
+  ],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Eigenschaften",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "9e0ec9d0b2894a4fa6b26bf650eb0751",
+        "Name": "Plannummer als Excel Datei - File Path",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -317.175011940426,
+        "Y": 1846.8965991840844
+      },
+      {
+        "Id": "21f2e4172431481f92c7ff2a6e64d841",
+        "Name": "Categories",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -293.49667725061715,
+        "Y": 2329.4302040534676
+      },
+      {
+        "Id": "9778789c7f544d7892a40b6583d49191",
+        "Name": "All Elements of Category",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -6.13739965095931,
+        "Y": 2328.1582942984351
+      },
+      {
+        "Id": "2d9916711b504aa88ed04d0da28ea6b7",
+        "Name": "Element.GetParameterValueByName",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1167.4834598379621,
+        "Y": 2435.9199134679748
+      },
+      {
+        "Id": "44d70c0d7c9940c9973fad3e70bea95f",
+        "Name": "List.FilterByBoolMask",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 2337.3577867957865,
+        "Y": 2315.2761709700653
+      },
+      {
+        "Id": "ca97ceacab624bb7a4aa6c052dd758df",
+        "Name": "Python Script",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1977.9797045738517,
+        "Y": 2202.1020744654961
+      },
+      {
+        "Id": "3ef4f8422ea3415ab6b2b2fc67e4dc07",
+        "Name": "Planänderung - Select Revision",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 2464.831956994673,
+        "Y": 2950.0912681873292
+      },
+      {
+        "Id": "fc03aa4d8d82488795827296a2c37c67",
+        "Name": "Boolean",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 3938.4314679201871,
+        "Y": 2647.8050821418265
+      },
+      {
+        "Id": "ebf5a6be4e8e4581866f16b41c3938c7",
+        "Name": "Sheets.Revisions",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 2716.6021174871426,
+        "Y": 2458.4573419878807
+      },
+      {
+        "Id": "90a635b29cfb4301b5d833ebb5676545",
+        "Name": "==",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 3306.0591615061371,
+        "Y": 2721.1004133245042
+      },
+      {
+        "Id": "3b6ee167dee94323b1a30a2290702857",
+        "Name": "List.FilterByBoolMask",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 3568.3562861618498,
+        "Y": 2462.1573178711005
+      },
+      {
+        "Id": "d2b5bdaeb75c4e6983d4186217d9eb75",
+        "Name": "Element.Id",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 3023.1282533754652,
+        "Y": 2608.1556769160889
+      },
+      {
+        "Id": "b18205d77a4f461099044d2e6f5f5133",
+        "Name": "Element.Id",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 3018.1647089351482,
+        "Y": 2831.6856281445462
+      },
+      {
+        "Id": "7d5a2a9e301f4354b4da1ecd778029a1",
+        "Name": "Data.ImportExcel",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 502.47146264072046,
+        "Y": 1943.0091638442109
+      },
+      {
+        "Id": "2f350234382547ad84cab518c06c1552",
+        "Name": "Excel Datei Tabelle Name - String",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 20.155970524753798,
+        "Y": 1987.3650526434849
+      },
+      {
+        "Id": "5f368262904e47b5b9e44eba3223f28d",
+        "Name": "File From Path",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 164.59763704299871,
+        "Y": 1847.3507739009224
+      },
+      {
+        "Id": "aaaa06dd79bf4b59a423a82813d6fe04",
+        "Name": "List.Transpose",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 853.94521938377716,
+        "Y": 1946.2164321658361
+      },
+      {
+        "Id": "c52d599d2c24444f84fc60b749baf42d",
+        "Name": "Code Block",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1278.1836240754133,
+        "Y": 1944.0049622801382
+      },
+      {
+        "Id": "b3753e6b1d8645a4aadb3fff227ececf",
+        "Name": "Boolean",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 146.26120457872457,
+        "Y": 2130.4067587246896
+      },
+      {
+        "Id": "1d470d15241146b5b232c24686d83dcc",
+        "Name": "Plannummer Parametername - String",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 722.33063169870536,
+        "Y": 2564.9546671262274
+      },
+      {
+        "Id": "2c896db1c6b04a23ba672e82fccbfb1c",
+        "Name": "Add Revisions to Sheet",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 4276.9416435843095,
+        "Y": 2339.3102921565383
+      }
+    ],
+    "Annotations": [],
+    "X": -4292.5142089671726,
+    "Y": -3035.750526531484,
+    "Zoom": 1.4862288847224177
+  }
+}

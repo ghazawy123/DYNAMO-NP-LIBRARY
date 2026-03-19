@@ -1,0 +1,280 @@
+{
+  "Uuid": "9e889f1c-8169-4040-9022-538d960c719e",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "NP_DP_Entwurfsoptionen_Löschen_nachKategorie",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "75fe697d827146939f9f73316fc41f62",
+      "Name": "Categories",
+      "Type": "selection",
+      "Type2": "dropdownSelection",
+      "Value": "OST_Rooms",
+      "Description": "Alle integrierten Kategorien",
+      "SelectedIndex": 527
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "74d58999-310b-4f27-bf12-9c30c4cb916c",
+      "FunctionType": "Graph",
+      "Id": "44e02a264b3c48af9ea956f0802e5589",
+      "NodeType": "FunctionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7bda46ad71b942619c1b64834a75ec7c",
+          "Name": "_designOptions",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "86c945b7ea7345deb97a1ab31e58fffa",
+          "Name": "_names",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Queries all of the design options currently in the project."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "618cce60-90e3-4ad3-9bea-ed326d75e583",
+      "FunctionType": "Graph",
+      "Id": "7ce9e44dfb834f348cc1f74ea62e5ce6",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "56fd5454cc434183a5ab679f84890c15",
+          "Name": "designOption",
+          "Description": "Collected DesignOption in active or linked document\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c05baf82ea214797aa94b12a946db82e",
+          "Name": "category",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "75cfbb41e6c74b93a7f46bf77f8d055d",
+          "Name": "Element",
+          "Description": "Rückgabewert",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Select all elements by Design Option and category in the given document.\r\nInspired by an archilab node."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 527,
+      "SelectedString": "OST_Rooms",
+      "Id": "75fe697d827146939f9f73316fc41f62",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "021d64a342714b99a13992aa87a938f9",
+          "Name": "Category",
+          "Description": "Die ausgewählte Kategorie",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Alle integrierten Kategorien"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "e9bee3743c374ff687ac8034a39c99ab",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "d96d0f4e193a4fce91185d83c0316df4",
+          "Name": "element",
+          "Description": "Element to delete.\n\nElement",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "848fe8b245a04cb796509fb83e2e1a17",
+          "Name": "bool",
+          "Description": "bool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "archilab.Revit.Elements.Elements.Delete@Revit.Elements.Element",
+      "Replication": "Auto",
+      "Description": "Delete element from Revit DB.\n\nElements.Delete (element: Element): bool"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "7bda46ad71b942619c1b64834a75ec7c",
+      "End": "56fd5454cc434183a5ab679f84890c15",
+      "Id": "01d57fc6fdba42678d07c9fe5ec6fedf",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "75cfbb41e6c74b93a7f46bf77f8d055d",
+      "End": "d96d0f4e193a4fce91185d83c0316df4",
+      "Id": "f1feb1ea3c844d87a33c1a30c57d18a0",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "021d64a342714b99a13992aa87a938f9",
+      "End": "c05baf82ea214797aa94b12a946db82e",
+      "Id": "c965a922cfd84d57bf2e14e41520cb74",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [
+    "74d58999-310b-4f27-bf12-9c30c4cb916c",
+    "618cce60-90e3-4ad3-9bea-ed326d75e583"
+  ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "archi-lab.net",
+      "Version": "2021.25.18",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "44e02a264b3c48af9ea956f0802e5589",
+        "e9bee3743c374ff687ac8034a39c99ab"
+      ]
+    },
+    {
+      "Name": "Genius Loci",
+      "Version": "2020.10.15",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "7ce9e44dfb834f348cc1f74ea62e5ce6"
+      ]
+    }
+  ],
+  "Thumbnail": null,
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Eigenschaften",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "44e02a264b3c48af9ea956f0802e5589",
+        "Name": "Get Design Options",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 677.73123605468072,
+        "Y": 942.53243325235781
+      },
+      {
+        "Id": "7ce9e44dfb834f348cc1f74ea62e5ce6",
+        "Name": "SelectByCategoryAndDesignOption",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1210.5668134540922,
+        "Y": 1157.8726017675074
+      },
+      {
+        "Id": "75fe697d827146939f9f73316fc41f62",
+        "Name": "Categories",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 666.084386878997,
+        "Y": 1348.2173251241309
+      },
+      {
+        "Id": "e9bee3743c374ff687ac8034a39c99ab",
+        "Name": "Elements.Delete",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1651.5605220858183,
+        "Y": 1158.4511183219017
+      }
+    ],
+    "Annotations": [],
+    "X": -277.56248070501317,
+    "Y": -513.38584799523,
+    "Zoom": 0.92151945135142166
+  }
+}

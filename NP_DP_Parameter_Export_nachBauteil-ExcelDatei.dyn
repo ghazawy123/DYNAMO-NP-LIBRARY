@@ -1,0 +1,673 @@
+{
+  "Uuid": "79d3a343-f80f-47f5-8d64-5240b6decf7d",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "Export multiple parameters to excel",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "652cf2bed8a149dbb2bf5c4a172b3c4c",
+      "Name": "Categories",
+      "Type": "selection",
+      "Type2": "dropdownSelection",
+      "Value": "OST_Doors",
+      "Description": "Alle integrierten Kategorien",
+      "SelectedIndex": 709
+    },
+    {
+      "Id": "3ba2eca69f604f27bdb691ceb5e9fcc6",
+      "Name": "Parametername - String",
+      "Type": "string",
+      "Type2": "string",
+      "Value": "NP_Bauteil,NP_Raumnummer,NP_Tür_Schloss,NP_Tür_Schleuse",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "SelectedIndex": 0
+    },
+    {
+      "Id": "eccdfd4e9e1c49b3bc53a214925a8f50",
+      "Name": "File Path",
+      "Type": "string",
+      "Type2": "string",
+      "Value": "..\\Excel Sheets\\try",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System und gibt ihren Dateipfad zurück",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 709,
+      "SelectedString": "OST_Doors",
+      "Id": "652cf2bed8a149dbb2bf5c4a172b3c4c",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "029a6a52dfff4915835322171f5768a2",
+          "Name": "Category",
+          "Description": "Die ausgewählte Kategorie",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Alle integrierten Kategorien"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "Id": "bdbde68abb0c46b5acf763f916a78668",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "1f1cc3522e5847028ed40ac60f503871",
+          "Name": "Category",
+          "Description": "Die Kategorie",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8755787c570e4c51a9ec251b162cd6a0",
+          "Name": "Elements",
+          "Description": "Eine Elementklasse.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ruft alle Elemente der angegebenen Kategorie aus dem Modell ab."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "fe2c58e05ff24f2b897286c5014f37dd",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "0a7504dd7bb94711a3413545cf8804fb",
+          "Name": "element",
+          "Description": "The element to get parameter from.\n\nElement",
+          "UsingDefaultValue": false,
+          "Level": 1,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "019361dd7c11403b89c76020304483c1",
+          "Name": "parameterName",
+          "Description": "The parameter name.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "297f71b13ae44323b0811b97a0ead5d7",
+          "Name": "value",
+          "Description": "The parameter value.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Rhythm.Revit.Elements.Elements.GetParameterValueByNameTypeOrInstance@Revit.Elements.Element,string",
+      "Replication": "Auto",
+      "Description": "This node will get the parameter as instance or type.\n\nElements.GetParameterValueByNameTypeOrInstance (element: Element, parameterName: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "Id": "ab75c6eb372d47b4b97608370d8fd9a0",
+      "NodeType": "BooleanInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "605b620019424444852169bd5e9d9404",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl zwischen True und False",
+      "InputValue": true
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "Id": "3ba2eca69f604f27bdb691ceb5e9fcc6",
+      "NodeType": "StringInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2dcefcfae5224d2d9688b9594ab7ae2b",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "InputValue": "NP_Bauteil,NP_Raumnummer,NP_Tür_Schloss,NP_Tür_Schleuse"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
+      "FunctionSignature": "DSCore.String.Split@string,string[]",
+      "FunctionType": "VariableArgument",
+      "Id": "81cd5461395d47e6b30b7478a215896e",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "dd63e2c8032f4b0698fb3934d257d1ea",
+          "Name": "string",
+          "Description": "Aufzuteilende Zeichenfolge\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c4f814952c1e425bbd87afe0fd1e7222",
+          "Name": "separator0",
+          "Description": "Zeichenfolgen, die (sofern vorhanden) Ende und Anfang der Teilung markieren.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cf98251decd146e3a987e9f00dfa6f81",
+          "Name": "strings",
+          "Description": "Liste der aus der Eingabezeichenfolge erstellten Zeichenfolgen",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Teilt eine einzelne Zeichenfolge in eine Liste von Zeichenfolgen auf, wobei die Unterteilungen durch die angegebenen Trennzeichenfolgen bestimmt werden.\n\nString.Split (string: string, separators: string[]): string[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "Id": "f92999eab014455cb813d614c92a26e5",
+      "NodeType": "StringInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "60a46686f41c48baa8c9f9c40c321e0d",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "InputValue": ","
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "f0a0ae0df2ec4ec8a7560fcacf9ff572",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "3a3e2b17a34d43cd9b3e030fad0a1b89",
+          "Name": "string",
+          "Description": "Zu verkürzende Zeichenfolge.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3ac4f49170c64ab7af4d4cb4fb2c684e",
+          "Name": "string",
+          "Description": "Die Zeichenfolge ohne Leerzeichen am Anfang und Ende",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.String.TrimWhitespace@string",
+      "Replication": "Auto",
+      "Description": "Entfernt alle Leerzeichen vom Anfang und Ende der angegebenen Zeichenfolge.\n\nString.TrimWhitespace (string: string): string"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "Id": "eccdfd4e9e1c49b3bc53a214925a8f50",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "98d92fe2db3a403d91658bfb5fd36b91",
+          "Name": "",
+          "Description": "Dateipfad",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System und gibt ihren Dateipfad zurück",
+      "HintPath": "C:\\Users\\m.elsayed\\OneDrive - Nickl-Architekten\\Desktop\\Scripts\\Excel Sheets\\try",
+      "InputValue": "..\\Excel Sheets\\try"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "927d3581611740fc8f352485a9f58712",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "c59735c63a6446ea8968bfce785f9ed9",
+          "Name": "filePath",
+          "Description": "Datei mit der Excel-Arbeitsmappe\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "533d4cca926f4d7695c3e444138848cd",
+          "Name": "sheetName",
+          "Description": "Name des Arbeitsblatts, das Daten enthält\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "da320cffafef448a9fb59e2d17f2d8c2",
+          "Name": "startRow",
+          "Description": "Startzeile zum Schreiben von Daten. Geben Sie 0 für Zeile 1, 1 für Zeile 2 usw. ein.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c90e3d1ea20540179db1cb1bd1dafb4e",
+          "Name": "startColumn",
+          "Description": "Startspalte zum Schreiben von Daten. Geben Sie 0 für Spalte A, 1 für Spalte B usw. ein.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0ec265cbb55c4bc8b0bb34048290f8c3",
+          "Name": "data",
+          "Description": "Die in die Tabelle zu schreibenden Daten\n\nvar[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e18d5eed4a5d4caa86d0aab3cf06f83b",
+          "Name": "overWrite",
+          "Description": "Löschen der Tabelle vor dem Schreiben ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "82cb705104c54c61bae9d723cf422907",
+          "Name": "writeAsString",
+          "Description": "Excel-Datei als Zeichenfolgen schreiben ein/aus\n\nbool\nVorgabewert : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8be242801b784b70953b27087a5743ec",
+          "Name": "data",
+          "Description": "Zeilen mit Daten aus dem Excel-Arbeitsblatt",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSOffice.Data.ExportToExcel@string,string,int,int,var[][],bool,bool",
+      "Replication": "Auto",
+      "Description": "Schreibt Daten in eine Microsoft Excel-Tabelle. Die Daten werden nach Zeilen geschrieben, wobei Unterlisten in aufeinander folgende Zeilen geschrieben werden. Zeilen und Spalten sind nullindiziert. Beispiel: Der Wert an Position [0,0] in der Datenliste wird in Zelle A1 geschrieben. Nullwerte und leere Listen werden als leere Zellen in Excel geschrieben. Für diesen Block muss Microsoft Excel installiert sein.\n\nData.ExportToExcel (filePath: string, sheetName: string, startRow: int, startColumn: int, data: var[][], overWrite: bool = false, writeAsString: bool = false): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "Id": "e758ea8e11644a84a797da49cceb4237",
+      "NodeType": "StringInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b7ffbcaa1bbb4b2b87e70830a5e318dc",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine Zeichenfolge.",
+      "InputValue": "Tabelle1"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NumberType": "Double",
+      "MaximumValue": 100.0,
+      "MinimumValue": 0.0,
+      "StepValue": 0.1,
+      "Id": "bd283a69b5e546608c8bef76277fffd9",
+      "NodeType": "NumberInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b91309b3a1c64313a60c157d1672a038",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erzeugt numerische Werte",
+      "InputValue": 0.0
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "029a6a52dfff4915835322171f5768a2",
+      "End": "1f1cc3522e5847028ed40ac60f503871",
+      "Id": "35f52f09af884d37ae7338c841d355e6",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "8755787c570e4c51a9ec251b162cd6a0",
+      "End": "0a7504dd7bb94711a3413545cf8804fb",
+      "Id": "62315812914b4717857f9bd5d9d993a7",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "297f71b13ae44323b0811b97a0ead5d7",
+      "End": "0ec265cbb55c4bc8b0bb34048290f8c3",
+      "Id": "24db2fe97d1348d198fdcc2c121d6d65",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "605b620019424444852169bd5e9d9404",
+      "End": "e18d5eed4a5d4caa86d0aab3cf06f83b",
+      "Id": "8844a14de13d49bebd9f50e1dffa89af",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "605b620019424444852169bd5e9d9404",
+      "End": "82cb705104c54c61bae9d723cf422907",
+      "Id": "341ea3e994c1456d8ab62ca0bc111bc8",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "2dcefcfae5224d2d9688b9594ab7ae2b",
+      "End": "dd63e2c8032f4b0698fb3934d257d1ea",
+      "Id": "6165960c1af248a880bb8959d00d184d",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "cf98251decd146e3a987e9f00dfa6f81",
+      "End": "3a3e2b17a34d43cd9b3e030fad0a1b89",
+      "Id": "150c9a9ebdbc4b968676ca4a31d5b122",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "60a46686f41c48baa8c9f9c40c321e0d",
+      "End": "c4f814952c1e425bbd87afe0fd1e7222",
+      "Id": "cff3cda759704155853e7bd804fd3b50",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "3ac4f49170c64ab7af4d4cb4fb2c684e",
+      "End": "019361dd7c11403b89c76020304483c1",
+      "Id": "7f2b5cf2744d4e25a6cc01ba52c33a4c",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "98d92fe2db3a403d91658bfb5fd36b91",
+      "End": "c59735c63a6446ea8968bfce785f9ed9",
+      "Id": "fce47e2437204a698a26253c6fc808a5",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "b7ffbcaa1bbb4b2b87e70830a5e318dc",
+      "End": "533d4cca926f4d7695c3e444138848cd",
+      "Id": "0cda52a0bac54a9fa4061f678194b903",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "b91309b3a1c64313a60c157d1672a038",
+      "End": "da320cffafef448a9fb59e2d17f2d8c2",
+      "Id": "81260d36e46d4289a307c2760166aa01",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "b91309b3a1c64313a60c157d1672a038",
+      "End": "c90e3d1ea20540179db1cb1bd1dafb4e",
+      "Id": "d6b818b2829b44459aacbd6dd41b9407",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Rhythm",
+      "Version": "2025.10.3",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "fe2c58e05ff24f2b897286c5014f37dd"
+      ]
+    }
+  ],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Eigenschaften",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "652cf2bed8a149dbb2bf5c4a172b3c4c",
+        "Name": "Categories",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 186.66570958582679,
+        "Y": 310.64283749527272
+      },
+      {
+        "Id": "bdbde68abb0c46b5acf763f916a78668",
+        "Name": "All Elements of Category",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 462.94458389719739,
+        "Y": 310.3944413676175
+      },
+      {
+        "Id": "fe2c58e05ff24f2b897286c5014f37dd",
+        "Name": "ʳʰʸᵗʰᵐ|Elements.GetParameterValueByNameTypeOrInstance",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 914.76866160029772,
+        "Y": 309.88422130534894
+      },
+      {
+        "Id": "ab75c6eb372d47b4b97608370d8fd9a0",
+        "Name": "Boolean",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1657.1826597466086,
+        "Y": 1176.7480396547808
+      },
+      {
+        "Id": "3ba2eca69f604f27bdb691ceb5e9fcc6",
+        "Name": "Parametername - String",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -170.18538099765169,
+        "Y": 501.05981614746179
+      },
+      {
+        "Id": "81cd5461395d47e6b30b7478a215896e",
+        "Name": "String.Split",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 146.0193592677673,
+        "Y": 542.40747207508934
+      },
+      {
+        "Id": "f92999eab014455cb813d614c92a26e5",
+        "Name": "String",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": -58.387491997816937,
+        "Y": 688.75373835402843
+      },
+      {
+        "Id": "f0a0ae0df2ec4ec8a7560fcacf9ff572",
+        "Name": "String.TrimWhitespace",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 474.43869609249725,
+        "Y": 541.73072109958252
+      },
+      {
+        "Id": "eccdfd4e9e1c49b3bc53a214925a8f50",
+        "Name": "File Path",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 187.12150589488226,
+        "Y": 58.8592433665047
+      },
+      {
+        "Id": "927d3581611740fc8f352485a9f58712",
+        "Name": "Data.ExportToExcel",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1971.1326704599046,
+        "Y": 909.04687585272018
+      },
+      {
+        "Id": "e758ea8e11644a84a797da49cceb4237",
+        "Name": "String",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1695.9560104700929,
+        "Y": 854.06369742413688
+      },
+      {
+        "Id": "bd283a69b5e546608c8bef76277fffd9",
+        "Name": "Number Slider",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1502.2942129526673,
+        "Y": 1013.4603350130592
+      }
+    ],
+    "Annotations": [],
+    "X": -948.12141907261412,
+    "Y": -144.2424201731194,
+    "Zoom": 0.8933508168827794
+  }
+}
